@@ -1,0 +1,13 @@
+{
+  "name": "base-logic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "gen-even": "node generateEvenNumbers",
+    "create-stars": "node createStarsPattern"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
