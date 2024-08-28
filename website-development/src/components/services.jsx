@@ -6,7 +6,7 @@ function Services() {
   return (
     <section
       id="services"
-      class="flex flex-col h-screen items-center bg-black w-full f"
+      class="flex flex-col h-screen items-center bg-black w-full"
     >
       <h1 class="uppercase font-bold text-4xl text-white my-48">
         Working areas

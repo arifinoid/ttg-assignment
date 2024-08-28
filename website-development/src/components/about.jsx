@@ -20,11 +20,9 @@ function About() {
             Thus MY GUYS KNOW HOW was born.
           </p>
 
-          <div class="outline outline-green-400 w-[18%] h-[12%] rounded-lg relative">
-            <button class="text-green-400 p-3 rounded-lg outline outline-green-400 w-32 uppercase absolute bottom-[-7px] right-[-7px]">
-              Read more
-            </button>
-          </div>
+          <button class="text-green-400 p-3 rounded-lg outline outline-green-400 w-32 uppercase">
+            Read more
+          </button>
         </div>
       </div>
     </section>
