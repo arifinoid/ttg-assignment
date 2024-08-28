@@ -1,0 +1,85 @@
+:root {
+  --primary-background: #121212;
+  --secondary-background: #1e1e1e;
+  --primary-text: #e0e0e0;
+
+  --blue: #2196f3;
+  --blue-hover: #1976d2;
+
+  --green: #4caf50;
+  --green-hover: #388e3c;
+
+  --red: #f44336;
+  --red-hover: #d32f2f;
+}
+
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: var(--primary-background);
+  color: var(--primary-text);
+}
+
+.stopwatch {
+  margin: 100px auto;
+  text-align: center;
+  background-color: var(--secondary-background);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.display {
+  font-family: "Roboto Mono", monospace;
+  font-size: 48px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color: var(--primary-text);
+}
+
+button {
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--primary-text);
+}
+
+#startPause {
+  background-color: var(--blue);
+}
+
+#startPause:hover {
+  background-color: var(--blue-hover);
+}
+
+#flag {
+  background-color: var(--green);
+}
+
+#flag:hover {
+  background-color: var(--green-hover);
+}
+
+#stop {
+  background-color: var(--red);
+}
+
+#stop:hover {
+  background-color: var(--red-hover);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  font-family: "Roboto Mono", monospace;
+}
+
+li {
+  font-family: "Roboto Mono", monospace;
+  color: var(--primary-text);
+}
