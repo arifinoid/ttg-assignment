@@ -3,9 +3,9 @@ import { infoLinks, links, supportLinks } from "../constants";
 
 function Footer() {
   return (
-    <footer class="flex flex-col items-center">
-      <div class="flex p-5 justify-center align-middle w-full gap-20">
-        <div>
+    <footer class="flex flex-col items-center w-full">
+      <div class="flex flex-col md:flex-row flex-wrap justify-center align-middle w-full gap-10 md:gap-20 p-5">
+        <div class="w-full md:w-auto text-center md:text-left">
           <h1 class="uppercase font-normal text-xl mb-4 underline decoration-green-400">
             Quick Links
           </h1>
@@ -22,7 +22,7 @@ function Footer() {
           </ul>
         </div>
 
-        <div>
+        <div class="w-full md:w-auto text-center md:text-left">
           <h1 class="uppercase font-normal text-xl mb-4 underline decoration-green-400">
             Support
           </h1>
@@ -39,11 +39,11 @@ function Footer() {
           </ul>
         </div>
 
-        <div class="flex flex-col items-center justify-center">
-          <img src={logo} alt="logo" class="mr-12 w-[200px] h-auto" />
+        <div class="w-full md:w-auto flex flex-col items-center justify-center">
+          <img src={logo} alt="logo" class="w-40 h-auto mx-auto" />
         </div>
 
-        <div>
+        <div class="w-full md:w-auto text-center md:text-left">
           <h1 class="uppercase font-normal text-xl mb-4 underline decoration-green-400">
             More Info
           </h1>
@@ -60,12 +60,12 @@ function Footer() {
           </ul>
         </div>
 
-        <div class="w-[20%]">
+        <div class="w-full md:w-auto text-center md:text-left">
           <h1 class="uppercase font-normal text-xl mb-4 underline decoration-green-400">
             Contact
           </h1>
           <ul class="ml-5">
-            <li class="my-1 text-gray-400 flex items-center gap-3">
+            <li class="my-1 text-gray-400 flex items-center justify-center md:justify-start gap-3">
               <svg
                 width="15"
                 height="15"
@@ -102,7 +102,7 @@ function Footer() {
                 105069 Schoger Dr. Unit 23 Nopevhio, II 60564
               </p>
             </li>
-            <li class="my-1 text-gray-400 flex items-center gap-3">
+            <li class="my-1 text-gray-400 flex items-center justify-center md:justify-start gap-3">
               <svg
                 width="15"
                 height="15"
@@ -123,7 +123,7 @@ function Footer() {
         </div>
       </div>
 
-      <div class="bg-gray-600 p-16 w-full text-center">
+      <div class="bg-gray-600 p-6 md:p-16 w-full text-center">
         <span class="uppercase text-white">
           &copy; {new Date().getFullYear()}{" "}
           <span class="text-green-400">My Guys Know How</span>. All Rights

@@ -78,12 +78,12 @@ function Products() {
   return (
     <section class="flex flex-col h-screen items-center justify-center bg-gray-100">
       <h1 class="uppercase font-normal text-4xl">Our Products</h1>
-      <ul class="flex my-8">
+      <ul class="flex my-8 overflow-x-auto whitespace-nowrap">
         <For each={productTabs}>
           {(t) => (
             <li class="mr-3">
               <a
-                class={`inline-block border uppercase rounded py-1 px-3 ${generateClass(t.active)}`}
+                class={`inline-block border uppercase rounded py-1 px-3 ${generateClass(t.active)} sm:text-sm md:text-base lg:text-lg`}
               >
                 {t.name}
               </a>
