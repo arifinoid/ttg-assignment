@@ -13,7 +13,9 @@ func StartAPI(pgdb *pg.DB) *chi.Mux {
 	r.Use(middleware.Logger, middleware.WithValue("DB", pgdb))
 
 	r.Route("/pets", func(r chi.Router) {
-		r.Get("/", getPets)
+		r.Get("/", GetPets)
+		r.Get("/{id}", GetPetByID)
+		r.Post("/", CreatePet)
 	})
 
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
@@ -21,8 +23,4 @@ func StartAPI(pgdb *pg.DB) *chi.Mux {
 	})
 
 	return r
-}
-
-func getPets(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("all pets"))
 }
