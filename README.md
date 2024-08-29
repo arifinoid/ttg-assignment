@@ -20,7 +20,7 @@ Make sure you have the following installed:
 1. Change directory to `website-development` or `vanilla-stopwatch`
 2. run `pnpm install` to install dependencies
 3. run `pnpm dev` to start the development server
-4. open http://localhost:3000 or http://127.0.0.1:3000 in your browser
+4. open http://localhost:3000 for `website-development` or http://127.0.0.1:8080 for `vanilla-stopwatch` in your browser
 
 ### Base Logic
 
