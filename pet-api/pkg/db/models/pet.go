@@ -41,3 +41,35 @@ func GetPetByID(db *pg.DB, id int) (*Pet, error) {
 
 	return pet, nil
 }
+
+func UpdatePet(db *pg.DB, req *Pet) (*Pet, error) {
+	_, err := db.Model(req).
+		WherePK().
+		Update()
+	if err != nil {
+		return nil, err
+	}
+
+	pet := &Pet{}
+
+	err = db.Model(pet).
+		Where("pet.id = ?", req.ID).
+		Select()
+
+	return pet, err
+}
+
+func DeletePet(db *pg.DB, petID int64) error {
+	pet := &Pet{}
+
+	err := db.Model(pet).
+		Where("pet.id = ?", petID).
+		Select()
+	if err != nil {
+		return err
+	}
+
+	_, err = db.Model(pet).WherePK().Delete()
+
+	return err
+}

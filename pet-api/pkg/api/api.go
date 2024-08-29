@@ -16,6 +16,8 @@ func StartAPI(pgdb *pg.DB) *chi.Mux {
 		r.Get("/", GetPets)
 		r.Get("/{id}", GetPetByID)
 		r.Post("/", CreatePet)
+		r.Put("/{id}", UpdatePetByID)
+		r.Delete("/{id}", DeletePetByID)
 	})
 
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {

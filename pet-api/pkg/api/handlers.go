@@ -23,7 +23,7 @@ type PetResponse struct {
 	Pet     models.Pet `json:"pet"`
 }
 
-type CreatePetRequest struct {
+type MutatePetRequest struct {
 	Name string `json:"name"`
 	Type string `json:"type"`
 }
@@ -91,7 +91,7 @@ func GetPetByID(w http.ResponseWriter, r *http.Request) {
 }
 
 func CreatePet(w http.ResponseWriter, r *http.Request) {
-	req := &CreatePetRequest{}
+	req := &MutatePetRequest{}
 	err := json.NewDecoder(r.Body).Decode(req)
 	if err != nil {
 		handleErr(w, err)
@@ -127,6 +127,60 @@ func CreatePet(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 }
 
+func UpdatePetByID(w http.ResponseWriter, r *http.Request) {
+	req := &MutatePetRequest{}
+	err := json.NewDecoder(r.Body).Decode(req)
+	if err != nil {
+		handleErr(w, err)
+		return
+	}
+	pgdb, ok := r.Context().Value("DB").(*pg.DB)
+	if !ok {
+		handleDBFromContextErr(w)
+		return
+	}
+
+	id := chi.URLParam(r, "id")
+	petId, err := strconv.ParseInt(id, 10, 64)
+	if err != nil {
+		handleErr(w, err)
+		return
+	}
+
+	pet, err := models.UpdatePet(pgdb, &models.Pet{
+		ID:   petId,
+		Name: req.Name,
+		Type: req.Type,
+	})
+	if err != nil {
+		handleErr(w, err)
+	}
+	handleOk(pet, w)
+}
+
+func DeletePetByID(w http.ResponseWriter, r *http.Request) {
+	pgdb, ok := r.Context().Value("DB").(*pg.DB)
+	if !ok {
+		handleDBFromContextErr(w)
+		return
+	}
+
+	id := chi.URLParam(r, "id")
+	petId, err := strconv.ParseInt(id, 10, 64)
+	if err != nil {
+		handleErr(w, err)
+		return
+	}
+
+	err = models.DeletePet(pgdb, petId)
+	if err != nil {
+		handleErr(w, err)
+		return
+	}
+
+	handleOk(nil, w)
+}
+
 func handleErr(w http.ResponseWriter, err error) {
 	res := &PetsResponse{
 		Success: false,
@@ -151,4 +205,19 @@ func handleDBFromContextErr(w http.ResponseWriter) {
 		log.Printf("error sending response %v\n", err)
 	}
 	w.WriteHeader(http.StatusBadRequest)
+}
+
+func handleOk(pet *models.Pet, w http.ResponseWriter) {
+	res := &PetResponse{
+		Success: true,
+		Error:   "",
+		Pet:     *pet,
+	}
+	err := json.NewEncoder(w).Encode(res)
+	if err != nil {
+		log.Printf("error encoding pet: %v\n", err)
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	w.WriteHeader(http.StatusOK)
 }

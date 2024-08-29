@@ -55,8 +55,7 @@ API Endpoints
    ```bash
    curl -X POST localhost:8080/pets -H "Content-Type: application/json" -d '{
    "name": "Max",
-   "species": "Dog",
-   "age": 4
+   "type": "Dog",
    }'
    ```
 
@@ -69,8 +68,7 @@ API Endpoints
    ```bash
    curl -X PUT localhost:8080/pets/1 -H "Content-Type: application/json" -d '{
    "name": "Bella",
-   "species": "Cat",
-   "age": 3
+   "type": "Cat",
    }'
 
    ```
